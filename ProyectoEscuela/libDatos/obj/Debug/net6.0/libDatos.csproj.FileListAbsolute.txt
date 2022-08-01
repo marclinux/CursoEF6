@@ -1,0 +1,14 @@
+C:\Users\Marcos\source\repos\CursoEF6\ProyectoEscuela\libDatos\bin\Debug\net6.0\libDatos.deps.json
+C:\Users\Marcos\source\repos\CursoEF6\ProyectoEscuela\libDatos\bin\Debug\net6.0\libDatos.runtimeconfig.json
+C:\Users\Marcos\source\repos\CursoEF6\ProyectoEscuela\libDatos\bin\Debug\net6.0\libDatos.dll
+C:\Users\Marcos\source\repos\CursoEF6\ProyectoEscuela\libDatos\bin\Debug\net6.0\libDatos.pdb
+C:\Users\Marcos\source\repos\CursoEF6\ProyectoEscuela\libDatos\obj\Debug\net6.0\libDatos.csproj.AssemblyReference.cache
+C:\Users\Marcos\source\repos\CursoEF6\ProyectoEscuela\libDatos\obj\Debug\net6.0\libDatos.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Marcos\source\repos\CursoEF6\ProyectoEscuela\libDatos\obj\Debug\net6.0\libDatos.AssemblyInfoInputs.cache
+C:\Users\Marcos\source\repos\CursoEF6\ProyectoEscuela\libDatos\obj\Debug\net6.0\libDatos.AssemblyInfo.cs
+C:\Users\Marcos\source\repos\CursoEF6\ProyectoEscuela\libDatos\obj\Debug\net6.0\libDatos.csproj.CoreCompileInputs.cache
+C:\Users\Marcos\source\repos\CursoEF6\ProyectoEscuela\libDatos\obj\Debug\net6.0\libDatos.dll
+C:\Users\Marcos\source\repos\CursoEF6\ProyectoEscuela\libDatos\obj\Debug\net6.0\refint\libDatos.dll
+C:\Users\Marcos\source\repos\CursoEF6\ProyectoEscuela\libDatos\obj\Debug\net6.0\libDatos.pdb
+C:\Users\Marcos\source\repos\CursoEF6\ProyectoEscuela\libDatos\obj\Debug\net6.0\libDatos.genruntimeconfig.cache
+C:\Users\Marcos\source\repos\CursoEF6\ProyectoEscuela\libDatos\obj\Debug\net6.0\ref\libDatos.dll

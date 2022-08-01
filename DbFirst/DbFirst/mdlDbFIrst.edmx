@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="dbFirstModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Carreras">
+          <Key>
+            <PropertyRef Name="CarreraId" />
+          </Key>
+          <Property Name="CarreraId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreCarrera" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Materias">
+          <Key>
+            <PropertyRef Name="MateriaId" />
+          </Key>
+          <Property Name="MateriaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreMateria" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Activa" Type="bit" Nullable="false" />
+          <Property Name="CarreraId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Materias_Carreras_CarreraId">
+          <End Role="Carreras" Type="Self.Carreras" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Materias" Type="Self.Materias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Carreras">
+              <PropertyRef Name="CarreraId" />
+            </Principal>
+            <Dependent Role="Materias">
+              <PropertyRef Name="CarreraId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbFirstModelStoreContainer">
+          <EntitySet Name="Carreras" EntityType="Self.Carreras" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Materias" EntityType="Self.Materias" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Materias_Carreras_CarreraId" Association="Self.FK_Materias_Carreras_CarreraId">
+            <End Role="Carreras" EntitySet="Carreras" />
+            <End Role="Materias" EntitySet="Materias" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbFirstModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Carreras">
+          <Key>
+            <PropertyRef Name="CarreraId" />
+          </Key>
+          <Property Name="CarreraId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreCarrera" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Materias" Relationship="dbFirstModel.FK_Materias_Carreras_CarreraId" FromRole="Carreras" ToRole="Materias" />
+        </EntityType>
+        <EntityContainer Name="dbFirstEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Carreras" EntityType="Self.Carreras" />
+          <EntitySet Name="Materias" EntityType="dbFirstModel.Materias" />
+          <AssociationSet Name="FK_Materias_Carreras_CarreraId" Association="dbFirstModel.FK_Materias_Carreras_CarreraId">
+            <End Role="Carreras" EntitySet="Carreras" />
+            <End Role="Materias" EntitySet="Materias" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Materias">
+          <Key>
+            <PropertyRef Name="MateriaId" />
+          </Key>
+          <Property Name="MateriaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreMateria" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Activa" Type="Boolean" Nullable="false" />
+          <Property Name="CarreraId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Carreras" Relationship="dbFirstModel.FK_Materias_Carreras_CarreraId" FromRole="Materias" ToRole="Carreras" />
+        </EntityType>
+        <Association Name="FK_Materias_Carreras_CarreraId">
+          <End Type="dbFirstModel.Carreras" Role="Carreras" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="dbFirstModel.Materias" Role="Materias" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Carreras">
+              <PropertyRef Name="CarreraId" />
+            </Principal>
+            <Dependent Role="Materias">
+              <PropertyRef Name="CarreraId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbFirstModelStoreContainer" CdmEntityContainer="dbFirstEntities">
+          <EntitySetMapping Name="Carreras">
+            <EntityTypeMapping TypeName="dbFirstModel.Carreras">
+              <MappingFragment StoreEntitySet="Carreras">
+                <ScalarProperty Name="CarreraId" ColumnName="CarreraId" />
+                <ScalarProperty Name="NombreCarrera" ColumnName="NombreCarrera" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Materias">
+            <EntityTypeMapping TypeName="dbFirstModel.Materias">
+              <MappingFragment StoreEntitySet="Materias">
+                <ScalarProperty Name="CarreraId" ColumnName="CarreraId" />
+                <ScalarProperty Name="Activa" ColumnName="Activa" />
+                <ScalarProperty Name="NombreMateria" ColumnName="NombreMateria" />
+                <ScalarProperty Name="MateriaId" ColumnName="MateriaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
