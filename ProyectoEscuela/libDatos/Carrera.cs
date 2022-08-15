@@ -18,7 +18,10 @@ namespace libDatos
         [MaxLength(20), Required]
         public string Plan { get; set; }
         public bool Activa { get; set; }
+        public int SemestreInicial { get; set; }
+        public int SemestreFinal { get; set; }
         public ICollection<Materia> Materias { get; set; }
+        public ICollection<Alumno> Alumnos { get; set; }
         #endregion
 
         #region Constructor

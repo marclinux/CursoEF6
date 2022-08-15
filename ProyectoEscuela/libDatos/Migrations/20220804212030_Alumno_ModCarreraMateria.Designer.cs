@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using libDatos;
 
@@ -10,9 +11,10 @@ using libDatos;
 namespace libDatos.Migrations
 {
     [DbContext(typeof(ContextoEscuela))]
-    partial class ContextoEscuelaModelSnapshot : ModelSnapshot
+    [Migration("20220804212030_Alumno_ModCarreraMateria")]
+    partial class Alumno_ModCarreraMateria
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

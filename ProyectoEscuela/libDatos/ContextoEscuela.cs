@@ -11,6 +11,8 @@ namespace libDatos
     {
         #region Propiedades
         public DbSet<Carrera> Carreras { get; set; }
+        public DbSet<Materia> Materias { get; set; }
+        public DbSet<Alumno> Alumnos { get; set; }
         #endregion
 
         #region Constructor
@@ -27,6 +29,10 @@ namespace libDatos
             modelBuilder.Entity<Materia>()
                 .HasOne(m => m.oCarrera)
                 .WithMany(c => c.Materias)
+                .OnDelete(DeleteBehavior.NoAction);
+            modelBuilder.Entity<Alumno>()
+                .HasOne(a => a.oCarrera)
+                .WithMany(c => c.Alumnos)
                 .OnDelete(DeleteBehavior.NoAction);
         }
         #endregion

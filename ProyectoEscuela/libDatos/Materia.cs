@@ -18,6 +18,8 @@ namespace libDatos
         public bool Activa { get; set; }
         public int CarreraId { get; set; }
         public Carrera oCarrera { get; set; }
+        public int Semestre { get; set; }
+        public int MateriaDependeId { get; set; }
         #endregion
 
         #region Constructor
