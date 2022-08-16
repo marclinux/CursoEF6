@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using libDatos;
 
@@ -10,9 +11,10 @@ using libDatos;
 namespace libDatos.Migrations
 {
     [DbContext(typeof(ContextoEscuela))]
-    partial class ContextoEscuelaModelSnapshot : ModelSnapshot
+    [Migration("20220815220400_Periodo_Curso_Calificacion")]
+    partial class Periodo_Curso_Calificacion
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -63,30 +65,6 @@ namespace libDatos.Migrations
                     b.HasIndex("CarreraId");
 
                     b.ToTable("Alumnos", "dbo");
-
-                    b.HasData(
-                        new
-                        {
-                            AlumnoId = 1,
-                            ApellidoMaterno = "HERNANDEZ",
-                            ApellidoPaterno = "HERNANDEZ",
-                            CarreraId = 3,
-                            Estatus = 1,
-                            Nombres = "MARCOS JESUS",
-                            NumeroControl = "8001001",
-                            SemestreActual = 1
-                        },
-                        new
-                        {
-                            AlumnoId = 2,
-                            ApellidoMaterno = "GARCIA",
-                            ApellidoPaterno = "PEREZ",
-                            CarreraId = 1,
-                            Estatus = 0,
-                            Nombres = "PEDRO",
-                            NumeroControl = "8001002",
-                            SemestreActual = 0
-                        });
                 });
 
             modelBuilder.Entity("libDatos.Calificacion", b =>
@@ -118,24 +96,6 @@ namespace libDatos.Migrations
                         .IsUnique();
 
                     b.ToTable("Calificaciones", "dbo");
-
-                    b.HasData(
-                        new
-                        {
-                            CalificacionId = 1,
-                            AlumnoId = 1,
-                            CursoId = 1,
-                            Nombre = "FINAL",
-                            Valor = 5.0m
-                        },
-                        new
-                        {
-                            CalificacionId = 2,
-                            AlumnoId = 1,
-                            CursoId = 2,
-                            Nombre = "FINAL",
-                            Valor = 9.5m
-                        });
                 });
 
             modelBuilder.Entity("libDatos.Carrera", b =>
@@ -168,35 +128,6 @@ namespace libDatos.Migrations
                     b.HasKey("CarreraId");
 
                     b.ToTable("Carreras", "dbo");
-
-                    b.HasData(
-                        new
-                        {
-                            CarreraId = 1,
-                            Activa = true,
-                            NombreCarrera = "SIN CARRERA",
-                            Plan = "",
-                            SemestreFinal = 0,
-                            SemestreInicial = 0
-                        },
-                        new
-                        {
-                            CarreraId = 2,
-                            Activa = true,
-                            NombreCarrera = "TRONCO COMUN ADMINISTRATIVO",
-                            Plan = "2018",
-                            SemestreFinal = 3,
-                            SemestreInicial = 1
-                        },
-                        new
-                        {
-                            CarreraId = 3,
-                            Activa = true,
-                            NombreCarrera = "INGENIERIA EN SISTEMAS COMPUTACIONALES",
-                            Plan = "2018",
-                            SemestreFinal = 9,
-                            SemestreInicial = 1
-                        });
                 });
 
             modelBuilder.Entity("libDatos.Curso", b =>
@@ -225,22 +156,6 @@ namespace libDatos.Migrations
                     b.HasIndex("PeriodoId");
 
                     b.ToTable("Cursos", "dbo");
-
-                    b.HasData(
-                        new
-                        {
-                            CursoId = 1,
-                            MateriaId = 3,
-                            Nombre = "INTR-01-2022",
-                            PeriodoId = 1
-                        },
-                        new
-                        {
-                            CursoId = 2,
-                            MateriaId = 4,
-                            Nombre = "MATE-01-2022",
-                            PeriodoId = 1
-                        });
                 });
 
             modelBuilder.Entity("libDatos.Materia", b =>
@@ -273,62 +188,6 @@ namespace libDatos.Migrations
                     b.HasIndex("CarreraId");
 
                     b.ToTable("Materias", "dbo");
-
-                    b.HasData(
-                        new
-                        {
-                            MateriaId = 1,
-                            Activa = true,
-                            CarreraId = 2,
-                            MateriaDependeId = 0,
-                            NombreMateria = "CONTABILIDAD I",
-                            Semestre = 1
-                        },
-                        new
-                        {
-                            MateriaId = 2,
-                            Activa = true,
-                            CarreraId = 2,
-                            MateriaDependeId = 0,
-                            NombreMateria = "ADMINISTRACIÓN DE EMPRESAS I",
-                            Semestre = 1
-                        },
-                        new
-                        {
-                            MateriaId = 3,
-                            Activa = true,
-                            CarreraId = 3,
-                            MateriaDependeId = 0,
-                            NombreMateria = "INTRODUCCIÓN A LA PROGRAMACIÓN",
-                            Semestre = 1
-                        },
-                        new
-                        {
-                            MateriaId = 4,
-                            Activa = true,
-                            CarreraId = 3,
-                            MateriaDependeId = 0,
-                            NombreMateria = "MATEMATICAS DISCRETAS",
-                            Semestre = 1
-                        },
-                        new
-                        {
-                            MateriaId = 5,
-                            Activa = true,
-                            CarreraId = 3,
-                            MateriaDependeId = 3,
-                            NombreMateria = "PROGRAMACION I",
-                            Semestre = 2
-                        },
-                        new
-                        {
-                            MateriaId = 6,
-                            Activa = true,
-                            CarreraId = 3,
-                            MateriaDependeId = 0,
-                            NombreMateria = "ESTRUCTURA DE DATOS",
-                            Semestre = 2
-                        });
                 });
 
             modelBuilder.Entity("libDatos.Periodo", b =>
@@ -353,15 +212,6 @@ namespace libDatos.Migrations
                     b.HasKey("PeriodoId");
 
                     b.ToTable("Periodos", "dbo");
-
-                    b.HasData(
-                        new
-                        {
-                            PeriodoId = 1,
-                            Anio = 2022,
-                            Nombre = "01-2022",
-                            Semestre = 1
-                        });
                 });
 
             modelBuilder.Entity("libDatos.Alumno", b =>
