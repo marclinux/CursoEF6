@@ -18,6 +18,7 @@ using (ContextoEscuela bd = new ContextoEscuela(optionBuilder.Options))
         Console.WriteLine("2. Mostrar alumnos inscritos");
         Console.WriteLine("3. Mostrar periodos");
         Console.WriteLine("4. Mostrar calificaciones");
+        Console.WriteLine("5. Mostrar materias relacionadas");
         Console.WriteLine("20. Salir");
         do
         {
@@ -63,6 +64,9 @@ using (ContextoEscuela bd = new ContextoEscuela(optionBuilder.Options))
                                         item.NombreCalificacion + "\t\t" +
                                         item.Valor.ToString());
                 }
+                break;
+            case 5:
+                OpcionesMenu.MuestraMateriasDepende(bd);
                 break;
             default:
                 break;

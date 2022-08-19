@@ -1,4 +1,5 @@
 ﻿using libDatos;
+using libDatos.Negocios;
 using libDatos.Repositorios;
 using System;
 using System.Collections.Generic;
@@ -107,6 +108,24 @@ namespace ProyectoEscuela
             } while (opcion != 20);
         }
 
+        public static void MuestraMateriasDepende(ContextoEscuela bd)
+        {
+            CarreraRepositorio repoCarrera = new CarreraRepositorio(bd);
+            List<Carrera> Carreras = repoCarrera.ObtenTodas();
+            MuestraLista(Carreras);
+            Console.WriteLine("Dame el indice de la carrera de las materias a mostrar:");
+            int indice = Convert.ToInt32(Console.ReadLine());
+            MateriaRepositorio repoMateria = new MateriaRepositorio(bd);
+            List<clsMateriasDepende> materias = new List<clsMateriasDepende>();
+            materias = repoMateria.ObtenRelacionadas(Carreras[indice].CarreraId);
+            Console.WriteLine("Materia\t\t\tSemestre\t\t\tDepende de\t\t\tSemestre");
+            foreach (var item in materias)
+            {
+                Console.WriteLine(item.NombreMateria + "\t" + item.Semestre.ToString() +
+                                    "\t\t" + item.NombreMateriaDepende + "\t" + 
+                                    item.SemestreMateriaDepende.ToString());
+            }
+        }
         private static void MuestraLista(List<Carrera> carreras)
         {
             for (int i = 0; i < carreras.Count; i++)
