@@ -20,6 +20,7 @@ using (ContextoEscuela bd = new ContextoEscuela(optionBuilder.Options))
         Console.WriteLine("4. Mostrar calificaciones");
         Console.WriteLine("5. Mostrar materias relacionadas");
         Console.WriteLine("6. Mostrar promedios");
+        Console.WriteLine("7. Agregar periodo");
         Console.WriteLine("20. Salir");
         do
         {
@@ -79,6 +80,17 @@ using (ContextoEscuela bd = new ContextoEscuela(optionBuilder.Options))
                     " numero de control: " + item.NumeroControl + " " +
                     " promedio: " + item.Promedio.ToString());
                 }
+                break;
+            case 7:
+                Periodo periodo = new Periodo();
+                repoPeriodo = new PeriodoRepositorio(bd);
+                Console.WriteLine("Dame el semestre del periodo:");
+                periodo.Semestre = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine("Dame el año del periodo:");
+                periodo.Anio = Convert.ToInt32(Console.ReadLine());
+                periodo.Nombre = periodo.Semestre.ToString() + "-" +
+                                periodo.Anio.ToString();
+                repoPeriodo.Agrega(periodo);
                 break;
             default:
                 break;
