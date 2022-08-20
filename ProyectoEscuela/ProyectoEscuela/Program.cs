@@ -19,6 +19,7 @@ using (ContextoEscuela bd = new ContextoEscuela(optionBuilder.Options))
         Console.WriteLine("3. Mostrar periodos");
         Console.WriteLine("4. Mostrar calificaciones");
         Console.WriteLine("5. Mostrar materias relacionadas");
+        Console.WriteLine("6. Mostrar promedios");
         Console.WriteLine("20. Salir");
         do
         {
@@ -67,6 +68,17 @@ using (ContextoEscuela bd = new ContextoEscuela(optionBuilder.Options))
                 break;
             case 5:
                 OpcionesMenu.MuestraMateriasDepende(bd);
+                break;
+            case 6:
+                repoAlumno = new AlumnoRepositorio(bd);
+                List<clsAlumnoPromedio> alumnosPromedio = new List<clsAlumnoPromedio>();
+                alumnosPromedio = repoAlumno.ObtenConPromedio();
+                foreach (var item in alumnosPromedio)
+                {
+                    Console.WriteLine("nombre: " + item.NombreCompleto +
+                    " numero de control: " + item.NumeroControl + " " +
+                    " promedio: " + item.Promedio.ToString());
+                }
                 break;
             default:
                 break;
