@@ -89,6 +89,12 @@ namespace libDatos.Repositorios
                 _bd.Calificaciones.Add(calificacion);
                 _bd.SaveChanges();
                 materiaIdAnterior = item.MateriaId;
+            }
+            var alumnos = (from al in materiasNuevas
+                           group al by al.AlumnoId into ra
+                           select new { AlumnoId = ra.Key }).ToList();
+            foreach (var item in alumnos)
+            {
                 Alumno alumno = _bd.Alumnos.Find(item.AlumnoId);
                 alumno.SemestreActual++;
                 _bd.SaveChanges();
